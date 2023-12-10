@@ -15,11 +15,13 @@ function SearchResults() {
     const [searchResults, setSearchResults] = useState([]);
     const [favoritesMap, setFavoritesMap] = useState(new Map());
 
+    const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
     // runs this when it mounts
     useEffect(() => {
         const fetchSearchResults = async () => {
             try {
-                const response = await fetch(`/api/search?q=${criteria}`);
+                const response = await fetch(`${SERVER_URL}/api/search?q=${criteria}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -44,7 +46,7 @@ function SearchResults() {
                     // Initialize the map with all search results marked as not favorited
                     const initialFavoritesMap = new Map(searchResults.map(result => [result.ingredientPostId, false]));
     
-                    const response = await fetch(`/api/favorites?username=${localStorage.getItem("username")}`);
+                    const response = await fetch(`${SERVER_URL}/api/favorites?username=${localStorage.getItem("username")}`);
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }

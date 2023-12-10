@@ -80,7 +80,7 @@ function Account() {
 				setUserRole(userData.role);
 
 				if (userData.role === 'business') {
-					console.log('location id222:', userData.location_id);
+					//console.log('location id222:', userData.location_id);
 					setBusinessLocationId(userData.location_id);
 					localStorage.setItem("location_id", userData.location_id);
 				}

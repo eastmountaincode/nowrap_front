@@ -42,7 +42,7 @@ function GeneralFeed() {
 					//console.log('inital map', initialFavoritesMap);
 
 					const response = await fetch(
-						`/api/favorites?username=${localStorage.getItem(
+						`${SERVER_URL}/api/favorites?username=${localStorage.getItem(
 							"username"
 						)}`
 					);

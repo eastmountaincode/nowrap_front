@@ -25,7 +25,7 @@ function OtherPersonsAccountPage() {
         console.log('User ID from URL params:', userId); // Log the User ID
 
         const fetchUserData = async () => {
-            const url = `/api/users/details?userId=${userId}`;
+            const url = `${SERVER_URL}/api/users/details?userId=${userId}`;
             //console.log('Fetching data from:', url); // Log the fetch URL
 
             try {
@@ -42,7 +42,7 @@ function OtherPersonsAccountPage() {
 
             // Fetch posts made by the user
             try {
-                const postsResponse = await fetch(`/api/user_posts/${userId}`);
+                const postsResponse = await fetch(`${SERVER_URL}/api/user_posts/${userId}`);
                 if (!postsResponse.ok) {
                     throw new Error('Failed to fetch user posts');
                 }
@@ -76,7 +76,7 @@ function OtherPersonsAccountPage() {
                     );
 
                     // get our own favorites
-                    const response = await fetch(`/api/favorites?username=${user.username}`);
+                    const response = await fetch(`${SERVER_URL}/api/favorites?username=${user.username}`);
                     if (!response.ok) {
                         throw new Error("Network response was not ok");
                     }

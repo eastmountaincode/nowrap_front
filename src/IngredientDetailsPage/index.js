@@ -11,6 +11,8 @@ function IngredientDetailsPage() {
   const authenticated = localStorage.getItem("authenticated");
   const authenticatedUsername = localStorage.getItem("username");
 
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
   const navigate = useNavigate();
 
   const handleDelete = async () => {
@@ -20,7 +22,7 @@ function IngredientDetailsPage() {
     if (isConfirmed) {
       // User clicked 'OK', proceed with the deletion
       try {
-        const response = await fetch(`/delete_ingredient/${identifier}`, {
+        const response = await fetch(`${SERVER_URL}/delete_ingredient/${identifier}`, {
           method: 'DELETE',
         });
 
@@ -50,7 +52,7 @@ function IngredientDetailsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/ingredient?identifier=${identifier}`);
+        const response = await fetch(`${SERVER_URL}/api/ingredient?identifier=${identifier}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

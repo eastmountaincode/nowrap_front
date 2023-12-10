@@ -213,7 +213,7 @@ function AddIngredient() {
 		}
 		try {
 			const response = await fetch(
-				`/check_existing_post?q=${formData.ingredient_name
+				`${SERVER_URL}/check_existing_post?q=${formData.ingredient_name
 				}&location=${encodeURIComponent(JSON.stringify(locationData))}`
 			);
 			if (!response.ok) {

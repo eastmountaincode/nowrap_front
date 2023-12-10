@@ -21,7 +21,7 @@ function EditIngredient() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`/api/ingredient?identifier=${id}`);
+                const response = await fetch(`${SERVER_URL}/api/ingredient?identifier=${id}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
