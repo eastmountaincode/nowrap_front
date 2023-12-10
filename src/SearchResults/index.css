@@ -1,0 +1,8 @@
+.no-decoration {
+    text-decoration: none;
+    color: inherit;
+}
+
+.no-decoration:hover {
+    opacity: 0.6;  /* reduce opacity on hover */
+}

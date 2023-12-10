@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.row.zw-account-format {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.col.zw-cancel-button-format {
+  text-align: right;
+}
+
+.col.zw-submit-button-format {
+  text-align: left;
+}
+
+.col.zw-upload-title-format {
+  text-align: left;
+}
+
+.nw-login-format {
+  width: 100%;
+}
