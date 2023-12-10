@@ -38,8 +38,8 @@ function SearchResults() {
     // Fetch favorites if user is authenticated
     useEffect(() => {
         const loggedIn = localStorage.getItem("authenticated") === 'true';
-        console.log("logged in?", loggedIn)
-        console.log("searchResults?", searchResults);
+        //console.log("logged in?", loggedIn)
+        //console.log("searchResults?", searchResults);
         if (loggedIn && searchResults.length > 0) {
             const fetchFavorites = async () => {
                 try {
@@ -52,7 +52,7 @@ function SearchResults() {
                     }
                     const userFavorites = await response.json();
                     // Update the map for items that are favorited
-                    console.log('user favorites in fetch favorites', userFavorites)
+                    //console.log('user favorites in fetch favorites', userFavorites)
 
                     userFavorites.forEach(favorite => {
                         if (initialFavoritesMap.has(favorite.ingredientPostId)) {
@@ -103,7 +103,7 @@ function SearchResults() {
 }
 
 function ListView({ searchResults, criteria, favoritesMap }) {
-    console.log("favorites map in list view", favoritesMap);
+    //console.log("favorites map in list view", favoritesMap);
     return (
         <div className='p-3'>
             {searchResults.length > 0 ? (

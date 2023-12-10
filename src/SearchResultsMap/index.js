@@ -2,6 +2,7 @@ import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import { Link } from 'react-router-dom';
 
 // This is a solution to an issue with Leaflet's default icon path
 delete L.Icon.Default.prototype._getIconUrl;
@@ -33,9 +34,9 @@ function SearchResultsMap({ results }) {
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {results && results.map((ingredient, index) => {
-                    const storeId = ingredient.store_id; // assuming each ingredient has a store_id field
-                    const coordinates = ingredient.location.coordinates.split(',').map(coord => parseFloat(coord.trim()));
+                {results && results.map((result, index) => {
+                    const storeId = result.location._id; // assuming each ingredient has a store_id field
+                    const coordinates = result.location.coordinates.split(',').map(coord => parseFloat(coord.trim()));
 
                     // Check if we have already added this store
                     if (storesAdded[storeId]) {
@@ -44,6 +45,7 @@ function SearchResultsMap({ results }) {
 
                     // Mark this store as added
                     storesAdded[storeId] = true;
+                    //console.log("result!!!!:", result);
 
                     return (
                         <Marker
@@ -51,9 +53,10 @@ function SearchResultsMap({ results }) {
                             position={coordinates}
                         >
                             <Popup>
-                                <strong>{ingredient.ingredient_name}</strong><br />
-                                <strong>Location:</strong> {ingredient.location.location_name}<br />
-                                <strong>Address:</strong> {ingredient.location.address}, {ingredient.location.city}, {ingredient.location.state}, {ingredient.location.country}, {ingredient.location.postal_code}
+                                <strong>{result.ingredient_name ? result.ingredient_name : result.ingredient.ingredient_name}</strong><br />
+                                <strong>Location:</strong> {result.location.location_name}<br />
+                                <strong>Address:</strong> {result.location.address}, {result.location.city}, {result.location.state}, {result.location.country}, {result.location.postal_code}<br />
+                                <Link to={`/details?identifier=${result._id ? result._id : result.ingredient._id}`}>View Details</Link>
                             </Popup>
                         </Marker>
                     );

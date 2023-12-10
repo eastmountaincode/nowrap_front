@@ -52,6 +52,9 @@ function Home() {
 				justifyContent: "center",
 			}}
 		>
+			<div className="d-flex justify-content-center align-items-center mb-3">
+				<h4>Explore and contribute to our collection of zero-waste products and ingredients 🌎.</h4>
+			</div>
 			{/* Add Ingredient */}
 			<div className="d-flex justify-content-center align-items-center mb-3">
 				<Link to="/AddIngredient" className="btn btn-primary">

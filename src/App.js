@@ -65,9 +65,9 @@ function App() {
 					</Routes>
 				</div>
 				{/* This is handled by the admin button in Account now */}
-				<div className="pb-3">
+				{/* <div className="pb-3">
 					<Footer />
-				</div>
+				</div> */}
 			</div>
 		</Router>
 	);
